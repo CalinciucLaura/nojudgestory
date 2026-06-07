@@ -1,0 +1,43 @@
+/* No Judge Story — Spacing, radii, shadows
+   Generous, airy whitespace. Soft 30px card radius and fully-round pills. */
+
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ---- Radii ---- */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;     /* signature card radius */
+  --radius-pill: 999px;  /* chips, buttons, avatars frame */
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.14);
+  --shadow-brand: 0 14px 34px rgba(243,72,109,0.32);
+
+  /* outline-card style: hairline brand stroke, no fill shadow */
+  --ring-brand: inset 0 0 0 1px var(--njs-rose);
+  --ring-subtle: inset 0 0 0 1px var(--njs-grey-300);
+
+  /* image-card legibility overlay (transparent → black, bottom-up) */
+  --scrim: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(84,73,73,0) 12%, rgba(106,106,106,0.51) 42%, rgba(88,88,88,0.59) 51%, rgba(0,0,0,0.92) 100%); /* @kind color */
+
+  /* ---- Motion ---- */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur-med: 280ms;  /* @kind other */
+}

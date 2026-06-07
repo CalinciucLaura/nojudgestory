@@ -1,0 +1,42 @@
+/* No Judge Story — Color tokens
+   A warm, feminine palette: ink-black editorial type on paper-white,
+   lifted by a signature rose→coral gradient. */
+
+:root {
+  /* ---- Base palette ---- */
+  --njs-ink: #000000;            /* primary text, logo wordmark base */
+  --njs-paper: #ffffff;          /* page + card background */
+
+  --njs-rose: #f3486d;           /* primary brand — pink/magenta */
+  --njs-coral: #ea8954;          /* secondary brand — warm coral */
+  --njs-red: #ed4e51;            /* accent — logo "STORY", links */
+  --njs-rose-deep: #b83838;      /* pressed / deep accent */
+
+  --njs-grey-700: #484848;       /* strong secondary text */
+  --njs-grey-500: #585858;       /* muted text, captions */
+  --njs-grey-300: #d9d9d9;       /* hairlines, image placeholders */
+  --njs-grey-100: #f4f1f0;       /* soft warm surface */
+
+  /* ---- Brand gradients ---- */
+  --njs-gradient: linear-gradient(90deg, #f3486d 0%, #ea8954 100%); /* @kind color */
+  --njs-gradient-tri: linear-gradient(180deg, #f3486d 0%, #ed4e51 48%, #ea8954 100%); /* @kind color */
+  --njs-wash: linear-gradient(180deg, rgba(243,72,109,0.10) 0%, rgba(237,78,81,0.10) 48%, rgba(234,137,84,0.10) 100%); /* @kind color */
+  --njs-wash-soft: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(234,137,84,0.16) 46%, rgba(243,72,109,0.16) 100%); /* @kind color */
+
+  /* ---- Semantic aliases ---- */
+  --text-strong: var(--njs-ink);
+  --text-body: var(--njs-grey-700);
+  --text-muted: var(--njs-grey-500);
+  --text-on-brand: #ffffff;
+  --text-accent: var(--njs-red);
+
+  --surface-page: var(--njs-paper);
+  --surface-card: var(--njs-paper);
+  --surface-soft: var(--njs-grey-100);
+  --surface-brand: var(--njs-gradient);
+
+  --border-subtle: var(--njs-grey-300);
+  --border-brand: var(--njs-rose);
+
+  --focus-ring: rgba(243,72,109,0.45);
+}

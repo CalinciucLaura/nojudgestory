@@ -1,0 +1,38 @@
+/* No Judge Story — Typography tokens
+   Display: EB Garamond (editorial, emotional, frequently italic).
+   UI/Body: Geist (clean, neutral, legible).
+   Accent:  Gaegu (handwritten — reserved for the founder's voice). */
+
+:root {
+  --font-display: 'EB Garamond', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-hand: 'Gaegu', 'Comic Sans MS', cursive;
+
+  /* ---- Type scale (px) ---- */
+  --fs-hero: 64px;     /* hero headlines */
+  --fs-h1: 48px;
+  --fs-h2: 40px;
+  --fs-h3: 32px;
+  --fs-h4: 24px;
+  --fs-lead: 20px;     /* lead paragraph */
+  --fs-body: 16px;
+  --fs-sm: 14px;
+  --fs-xs: 12px;
+  --fs-2xs: 10px;      /* eyebrows / meta */
+
+  /* ---- Weights ---- */
+  --fw-regular: 400;   /* @kind font */
+  --fw-medium: 500;    /* @kind font */
+  --fw-semibold: 600;  /* @kind font */
+  --fw-bold: 700;      /* @kind font */
+  --fw-extrabold: 800; /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.05;    /* @kind font */
+  --lh-snug: 1.2;      /* @kind font */
+  --lh-body: 1.55;     /* @kind font */
+
+  /* ---- Tracking ---- */
+  --ls-tight: -0.01em; /* @kind font */
+  --ls-wide: 0.08em;   /* @kind font */
+}
