@@ -21,7 +21,7 @@ const PR_BENEFITS = [
 /* ── icons ── */
 function PrSpark() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5 10.1 8.6 12 3z"
         stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
     </svg>
@@ -316,14 +316,14 @@ function PrStyles() {
     .pr-lede { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted);
       margin: 0; max-width: 46ch; }
 
-    .pr-benefits { list-style:none; margin: 22px 0 24px; padding:0; display:flex; flex-direction:column; gap: 14px; }
-    .pr-benefit { display:flex; align-items:flex-start; gap: 13px; }
-    .pr-benefit__ic { flex:none; width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
+    .pr-benefits { list-style:none; margin: 14px 0 16px; padding:0; display:flex; flex-direction:column; gap: 10px; }
+    .pr-benefit { display:flex; align-items:flex-start; gap: 10px; }
+    .pr-benefit__ic { flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center;
       color: var(--njs-rose); background: rgba(243,72,109,0.10); box-shadow: var(--ring-brand); margin-top:1px; }
     .pr-benefit__text { display:flex; flex-direction:column; gap:1px; }
-    .pr-benefit__text strong { font-family: var(--font-sans); font-size: var(--fs-body);
+    .pr-benefit__text strong { font-family: var(--font-sans); font-size: var(--fs-sm);
       font-weight: var(--fw-semibold); color: var(--text-strong); }
-    .pr-benefit__text span { font-size: var(--fs-sm); line-height: 1.45; color: var(--text-muted); }
+    .pr-benefit__text span { font-size: 0.72rem; line-height: 1.4; color: var(--text-muted); }
 
     .pr-form { display:flex; flex-direction:column; }
     .pr-row { display:grid; grid-template-columns: 0.85fr 1.15fr; gap: 14px; }
