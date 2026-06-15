@@ -7,54 +7,54 @@ const LP_AVATARS = [1, 2, 3, 4].map((n) => `assets/avatar-${n}.jpg`);
 const LP_FA_LARGE = [
   {
     img: 'assets/about-portrait-sm.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
-    date: '12/05/2025', read: '5 minute de citit',
+    title: 'Am plecat după 6 ani. Nu m-am simțit niciodată mai liberă.',
+    excerpt: 'Toată lumea din jur îmi spunea că sunt nebună. Că o relație de 6 ani nu se aruncă. Că o să regret. Nimeni nu știa cum era cu adevărat în spatele ușilor închise — nici eu nu știam cum să explic. Până când am scris. Și atunci am înțeles.',
+    date: '03/04/2025', read: '6 minute de citit',
   },
   {
     img: 'assets/story-feature-sm.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
-    date: '12/05/2025', read: '5 minute de citit',
+    title: 'Nimeni nu mi-a spus că maternitatea poate fi și singurătate.',
+    excerpt: 'Toată lumea îți spune că va fi frumos. Că vei iubi cu o intensitate pe care nu ai mai simțit-o. Și e adevărat. Dar nimeni nu îți spune că poți ține un bebeluș în brațe și să te simți complet singură. Eu am simțit asta și mi-a fost rușine ani de zile.',
+    date: '17/04/2025', read: '5 minute de citit',
   },
 ];
 
 const LP_FA_MINI = [
   {
     img: 'assets/avatar-1.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
+    title: 'Mi-am dat demisia fără alt job. Și nu regret.',
+    excerpt: 'Toată lumea m-a privit de parcă aș fi pierdut mințile. Dar în interiorul meu era, pentru prima dată după ani, liniște.',
   },
   {
     img: 'assets/avatar-2.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
+    title: 'Am 34 de ani și abia acum îmi place de mine.',
+    excerpt: 'Nu a fost un moment anume. A fost o dimineață obișnuită când m-am uitat în oglindă și nu m-am mai criticat. Pur și simplu.',
   },
   {
     img: 'assets/avatar-3.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
+    title: 'Anxietatea mea nu este slăbiciune. A durat 3 ani să înțeleg asta.',
+    excerpt: 'Credeam că dacă o ascund destul de bine, va dispărea. Spoiler: nu dispare. Dar când am vorbit despre ea, s-a mai micșorat puțin.',
   },
 ];
 
 const LP_FA_BOTTOM = [
   {
     img: 'assets/founder-sm.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
-    date: '12/05/2025', read: '5 minute de citit',
+    title: 'Prietena mea cea mai bună nu mai există. A ales el în locul meu.',
+    excerpt: 'Opt ani de prietenie. Sute de nopți în care am plâns una la cealaltă. Și într-o zi, pur și simplu, nu a mai răspuns la telefon. Am înțeles mult mai târziu că nu era vina mea.',
+    date: '28/03/2025', read: '4 minute de citit',
   },
   {
     img: 'assets/hero-portrait.png',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
-    date: '12/05/2025', read: '5 minute de citit',
+    title: 'La 40 de ani am început să trăiesc pentru mine. Nu era târziu.',
+    excerpt: 'Toată viața am trăit pentru alții — pentru părinți, pentru soț, pentru copii. La 40 de ani am înscris la un curs de pictură fără să cer voie nimănui. A fost revoluționar.',
+    date: '10/05/2025', read: '7 minute de citit',
   },
   {
     img: 'assets/about-portrait-sm.jpg',
-    title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    excerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, l',
-    date: '12/05/2025', read: '5 minute de citit',
+    title: 'Burnout-ul nu arată ca în filme. Arată ca mine, zâmbind la birou.',
+    excerpt: 'Nu am căzut dramatic. Nu am plâns în public. Am continuat să merg la muncă, să zâmbesc, să livrez. Pe interior mă stingeam încet, fără să știu cum să cer ajutor.',
+    date: '22/04/2025', read: '5 minute de citit',
   },
 ];
 
@@ -321,9 +321,11 @@ function LpAbout() {
         <div className="lp-about__desc">
           <h3 className="lp-about__desc-head">Despre</h3>
           <p className="lp-about__desc-body">
-            Iubesc să transform momentele de zi cu zi în povești care inspiră și conectează.
-            Fie că e vorba de relații, carieră sau viața de zi cu zi, scopul meu este să creez
-            un spațiu unde fiecare voce să se simtă ascultată și valoroasă.
+            No Judge Story s-a născut dintr-o nevoie reală — aceea de a avea un loc unde
+            să poți fi sinceră fără să-ți fie teamă. Un spațiu unde poveștile tale nu sunt
+            judecate, corectate sau minimizate. Unde alte femei te înțeleg pentru că au
+            trăit lucruri asemănătoare. Suntem o comunitate în construcție, și fiecare
+            poveste împărtășită o face mai puternică.
           </p>
         </div>
       </FadeUp>
