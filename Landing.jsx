@@ -44,14 +44,19 @@ function scrollTo(id) {
 
 /* ───────────── nav ───────────── */
 function LpNav() {
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   return (
-    <header className="lp-nav">
+    <header className={`lp-nav${scrolled ? ' lp-nav--scrolled' : ''}`}>
       <a href="#top" className="lp-nav__logo" aria-label="No Judge Story" onClick={scrollTo('top')}><img src="assets/logo.png" alt="No Judge Story" className="lp-nav__logo-img" /></a>
       <nav className="lp-nav__links">
         <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
         <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
         <a href="#fondatoare" onClick={scrollTo('fondatoare')}>Despre</a>
-        <a href="#acces-anticipat" className="lp-nav__cta" onClick={scrollTo('acces-anticipat')}>Intră pe listă</a>
       </nav>
     </header>
   );
@@ -97,22 +102,22 @@ function FadeUp({ children, delay = 0, as: Tag = 'div', className, style, id }) 
 /* ───────────── hero (fidel Figma) ───────────── */
 const LP_HERO_CARDS = [
   {
-    img: 'assets/about-portrait-sm.jpg', av: 'assets/avatar-1.jpg',
+    img: 'assets/woman3.jpg', av: 'assets/avatar-1.jpg',
     quote: 'M-am simțit exclusă…',
     body: 'Până am găsit un loc unde puteam scrie fără să-mi fie teamă de judecată.',
   },
   {
-    img: 'assets/hero-portrait.png', av: 'assets/avatar-2.jpg',
+    img: 'assets/friends.jpg', av: 'assets/avatar-2.jpg',
     quote: 'Credeam că sunt singura.',
     body: 'Aici am citit zeci de povești care erau, de fapt, ale mele.',
   },
   {
-    img: 'assets/story-feature-sm.jpg', av: 'assets/avatar-3.jpg',
+    img: 'assets/woman2.jpg', av: 'assets/avatar-3.jpg',
     quote: 'Am scris și am respirat.',
     body: 'Mi-am dat demisia și mi-a fost frică să spun cuiva. Aici am spus-o întâi.',
   },
   {
-    img: 'assets/founder-sm.jpg', av: 'assets/avatar-4.jpg',
+    img: 'assets/woman.jpg', av: 'assets/avatar-4.jpg',
     quote: 'Pentru prima dată, ascultată.',
     body: 'Am scris noaptea, în timp ce alăptam. Nimeni nu m-a judecat — m-au ascultat.',
   },
@@ -158,8 +163,8 @@ function LpHero() {
             <div className="lp-hc__img" style={{ backgroundImage: `url(${c.img})` }} />
             <img className="lp-hc__av" src={c.av} alt="" />
             <div className="lp-hc__panel">
-              <p className="lp-hc__q">„{c.quote}”</p>
-              <p className="lp-hc__b">{c.body}</p>
+              <p className='lp-hc__q'>„{c.quote}”</p>
+              <p className='lp-hc__b'>{c.body}</p>
             </div>
           </article>
         ))}
@@ -168,19 +173,6 @@ function LpHero() {
   );
 }
 
-/* ───────────── promises strip ───────────── */
-function LpPromises() {
-  return (
-    <div className="lp-promises">
-      {LP_PROMISES.map((p, i) => (
-        <React.Fragment key={p}>
-          {i > 0 && <span className="lp-promises__dot" aria-hidden="true" />}
-          <span className="lp-promises__item">{p}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
 
 /* ───────────── featured articles ───────────── */
 function LpFeaturedArticles({ onOpen }) {
@@ -193,7 +185,6 @@ function LpFeaturedArticles({ onOpen }) {
           <em className="lp-fa__em-dark">în a-și exprima</em>{' '}
           <em className="lp-fa__em-grad">poveștile de viață</em>
         </h2>
-        <a href="#povesti" className="lp-fa__discover" onClick={scrollTo('povesti')}>Descoperă poveștile</a>
       </FadeUp>
 
       <div className="lp-fa__row1">
@@ -303,27 +294,37 @@ function LpAbout() {
 }
 
 /* ───────────── povești ───────────── */
-function LpStories() {
+const LP_CATEGORIES = [
+  { label: 'artă',            img: 'assets/about-portrait-sm.jpg' },
+  { label: 'căsnicie',        img: 'assets/avatar-1.jpg' },
+  { label: 'prietenii',       img: 'assets/avatar-2.jpg' },
+  { label: 'familie',         img: 'assets/avatar-3.jpg' },
+  { label: 'business',        img: 'assets/avatar-4.jpg' },
+  { label: 'natură',          img: 'assets/story-feature-sm.jpg' },
+  { label: 'viața de mămică', img: 'assets/founder-sm.jpg' },
+  { label: 'călătorii',       img: 'assets/coffee.jpg' },
+  { label: 'copilărie',       img: 'assets/story-feature-sm.jpg' },
+  { label: 'carieră',         img: 'assets/about-portrait-sm.jpg' },
+  { label: 'relații',         img: 'assets/avatar-1.jpg' },
+  { label: 'beauty',          img: 'assets/avatar-2.jpg' },
+];
+
+function LpCategories() {
   return (
-    <section className="lp-stories" id="povesti">
+    <section className='lp-cats' id='povesti'>
       <FadeUp>
-        <div className="lp-section-head">
-          <span className="lp-eyebrow lp-eyebrow--brand">Povești reale</span>
-          <h2 className="lp-h2">Povești care îți <em>seamănă</em></h2>
-          <p className="lp-section-sub">
-            Fragmente sincere, scrise anonim de femei ca tine. Fără nume, fără judecată.
-          </p>
+        <h2 className='lp-cats__title'>Împărtășește din experiențele tale</h2>
+      </FadeUp>
+      <FadeUp delay={0.1}>
+        <div className='lp-cats__grid'>
+          {LP_CATEGORIES.map((c) => (
+            <div className='lp-cat-chip' key={c.label}>
+              <img className='lp-cat-chip__img' src={c.img} alt={c.label} />
+              <span className='lp-cat-chip__label'>{c.label}</span>
+            </div>
+          ))}
         </div>
       </FadeUp>
-      <div className="lp-story-grid">
-        {LP_STORIES.map((s, i) => (
-          <FadeUp key={s.quote} delay={i * 0.1} as="article" className={'lp-story' + (s.feature ? ' lp-story--feature' : '')}>
-            <span className="lp-story__tag">{s.cat}</span>
-            <p className="lp-story__quote">„{s.quote}”</p>
-            <span className="lp-story__who">{s.who}</span>
-          </FadeUp>
-        ))}
-      </div>
     </section>
   );
 }
@@ -389,10 +390,10 @@ function LandingPage() {
       <LpNav />
       <main>
         <LpHero />
-        <LpPromises />
+
         <LpFeaturedArticles onOpen={openStory} />
         <LpAbout />
-        <LpStories />
+        <LpCategories />
         <LpFounder />
         <PreRegisterSection />
       </main>
@@ -458,11 +459,12 @@ function LandingStyles() {
     /* nav */
     .lp-nav { position: sticky; top: 0; z-index: 30;
       display:flex; align-items:center; justify-content:space-between;
-      max-width: 1160px; margin: 0 auto; padding: 18px 32px;
+      padding: 18px 32px;
       background: transparent;
-      border-bottom: none; }
+      transition: background 0.25s ease, box-shadow 0.25s ease; }
+    .lp-nav--scrolled { background: #fff; box-shadow: 0 1px 16px rgba(0,0,0,0.08); }
     .lp-nav__logo { text-decoration:none; }
-    .lp-nav__logo-img { height: 52px; width: auto; display: block; }
+    .lp-nav__logo-img { height: 36px; width: auto; display: block; }
     .lp-nav__links { display:flex; align-items:center; gap: 28px; }
     .lp-nav__links a { font-family: var(--font-sans); font-size: 15px; font-weight: var(--fw-medium);
       color: var(--text-muted); text-decoration:none; transition: color var(--dur-fast) var(--ease-soft); }
@@ -512,7 +514,7 @@ function LandingStyles() {
       background-size: cover; background-position: center; box-shadow: var(--shadow-md); }
     .lp-hc__av { position:absolute; top: 16px; right: 16px; z-index:3; width: 48px; height: 48px;
       border-radius:50%; object-fit:cover; border: 2.5px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.32); }
-    .lp-hc__panel { position:absolute; left: 12px; right: 12px; bottom: 12px; z-index:2;
+    .lp-hc__panel { position:absolute; left: 0; right: 0; bottom: 0; z-index:2;
       border-radius: 22px; padding: 30px 20px 20px; min-height: 58%;
       display:flex; flex-direction:column; justify-content:flex-end;
       background: linear-gradient(180deg, rgba(34,18,20,0) 0%, rgba(28,12,14,0.55) 36%, rgba(18,7,9,0.9) 100%); }
@@ -522,19 +524,13 @@ function LandingStyles() {
     .lp-hc__b { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.5;
       color: rgba(255,255,255,0.82); margin: 0; }
 
-    /* promises strip */
-    .lp-promises { display:flex; align-items:center; justify-content:center; flex-wrap: wrap;
-      gap: 18px; max-width: 1160px; margin: 0 auto; padding: 22px 32px 56px; }
-    .lp-promises__item { font-family: var(--font-display); font-style: italic;
-      font-size: 22px; color: var(--text-body); }
-    .lp-promises__dot { width:6px; height:6px; border-radius:50%; background: var(--njs-rose); opacity: .6; }
 
     /* featured articles */
-    .lp-fa { max-width: 1160px; margin: 0 auto; padding: 72px 32px 40px; }
+    .lp-fa { max-width: 1160px; margin: 0 auto; padding: 0 32px 40px; }
 
     .lp-fa__title { font-family: var(--font-display); font-weight: var(--fw-bold);
       font-size: clamp(26px, 3.5vw, 46px); line-height: 1.18; letter-spacing: var(--ls-tight);
-      color: var(--text-strong); margin: 0; }
+      color: var(--text-strong); margin-bottom: 70px;}
     .lp-fa__em-rose { font-style: italic; color: var(--njs-rose);
       -webkit-text-fill-color: var(--njs-rose); background: none; }
     .lp-fa__em-dark { font-style: italic; color: var(--text-strong);
@@ -610,24 +606,23 @@ function LandingStyles() {
     .lp-about__desc-body { font-family: var(--font-sans); font-size: var(--fs-lead);
       line-height: var(--lh-body); color: var(--text-body); margin: 0; }
 
-    /* povești */
-    .lp-stories { max-width: 1160px; margin: 0 auto; padding: 40px 32px 80px; }
-    .lp-story-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
-    .lp-story { position: relative; background: var(--surface-card); border-radius: var(--radius-lg);
-      padding: 32px 30px; box-shadow: var(--ring-subtle);
-      display:flex; flex-direction:column; gap: 18px; min-height: 290px;
-      transition: transform var(--dur-med) var(--ease-soft), box-shadow var(--dur-med); }
-    .lp-story:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .lp-story--feature { background: var(--njs-wash); box-shadow: var(--ring-brand);
-      grid-row: span 1; }
-    .lp-story__tag { align-self:flex-start; font-family: var(--font-sans); font-size: var(--fs-2xs);
-      font-weight: var(--fw-bold); letter-spacing: var(--ls-wide); text-transform: uppercase; white-space: nowrap;
-      color: var(--njs-rose-deep); background: rgba(243,72,109,0.10); border: 1px solid rgba(243,72,109,0.22);
-      padding: 6px 12px; border-radius: var(--radius-pill); }
-    .lp-story__quote { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-medium);
-      font-size: 24px; line-height: 1.32; color: var(--text-strong); margin: 0; flex: 1; }
-    .lp-story__who { font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: var(--fw-medium);
-      color: var(--text-muted); }
+    /* categories */
+    .lp-cats { position: relative; max-width: 1160px; margin: 0 auto; padding: 40px 32px 80px; }
+    .lp-cats::before { content:''; position:absolute; right:-40px; top:50%; transform:translateY(-50%);
+      width: 600px; height: 600px; background: url('/assets/water-mark.png') center/contain no-repeat;
+      opacity: 0.35; z-index: 0; pointer-events: none; }
+    .lp-cats__title, .lp-cats__grid { position: relative; z-index: 1; }
+    .lp-cats__title { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-semibold);
+      font-size: clamp(28px, 3vw, 42px); color: var(--text-strong); margin: 0 0 40px; }
+    .lp-cats__grid { display:flex; flex-wrap:wrap; gap: 14px; }
+    .lp-cat-chip { display:flex; align-items:center; gap: 10px;
+      background: #fff; border-radius: 999px; padding: 6px 20px 6px 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      cursor: pointer; transition: box-shadow 0.2s, transform 0.2s; }
+    .lp-cat-chip:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.12); transform: translateY(-1px); }
+    .lp-cat-chip__img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink:0; }
+    .lp-cat-chip__label { font-family: var(--font-sans); font-size: 15px; font-weight: var(--fw-medium);
+      color: var(--text-strong); white-space: nowrap; }
 
     /* founder */
     .lp-founder { max-width: 1060px; margin: 0 auto; padding: 64px 32px;
@@ -660,8 +655,6 @@ function LandingStyles() {
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 48px; }
       .lp-founder { grid-template-columns: 1fr; gap: 32px; }
       .lp-founder__portrait { max-width: 360px; }
-      .lp-story-grid { grid-template-columns: 1fr 1fr; }
-      .lp-story--feature { grid-column: span 2; }
       .lp-fa__row1 { grid-template-columns: 1fr 1fr; }
       .lp-fa__mini-box { grid-column: span 2; }
       .lp-fa__row2 { grid-template-columns: 1fr 1fr; }
@@ -669,15 +662,14 @@ function LandingStyles() {
       .lp-about__desc { grid-template-columns: 1fr; gap: 16px; }
     }
     @media (max-width: 700px){
+      .lp-nav { padding: 14px 20px; }
       .lp-nav__links a:not(.lp-nav__cta) { display:none; }
     }
     @media (max-width: 600px){
-      .lp-hero { padding: 36px 20px 56px; }
+      .lp-hero { padding: 100px 20px 56px; }
       .lp-hero__title { font-size: 38px; }
       .lp-h2 { font-size: 34px; }
-      .lp-fa, .lp-stories, .lp-founder { padding-left: 20px; padding-right: 20px; }
-      .lp-story-grid { grid-template-columns: 1fr; }
-      .lp-story--feature { grid-column: span 1; }
+      .lp-fa, .lp-cats, .lp-founder { padding-left: 20px; padding-right: 20px; }
       .lp-fa__row1, .lp-fa__row2 { grid-template-columns: 1fr; }
       .lp-about { padding: 56px 20px 52px; }
       .lp-about__deco { width: 100px; height: 130px; }
@@ -687,7 +679,9 @@ function LandingStyles() {
       .lp-hero__cards::-webkit-scrollbar { display: none; }
       .lp-hc { flex: 0 0 80vw; max-width: 320px; min-height: 380px; scroll-snap-align: start; }
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 0; }
-      .lp-promises__item { font-size: 18px; }
+      .lp-hero__email-wrap { flex-direction: column; align-items: stretch; }
+      .lp-hero__email-input { width: 100%; text-align: center; }
+      .lp-hero__email-wrap .anim-cta { justify-content: center; }
       .lp-foot { padding: 40px 20px; }
     }
   `}</style>;

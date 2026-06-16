@@ -177,7 +177,7 @@ Am doliat prietenia asta ca pe o pierdere reală. Și cred că e important să r
   },
   {
     id: 'la-40-de-ani',
-    img: 'assets/hero-portrait.png',
+    img: 'assets/coffee.jpeg',
     title: 'La 40 de ani am început să trăiesc pentru mine. Nu era târziu.',
     excerpt: 'Toată viața am trăit pentru alții — pentru părinți, pentru soț, pentru copii. La 40 de ani am înscris la un curs de pictură fără să cer voie nimănui. A fost revoluționar.',
     date: '10/05/2025',
