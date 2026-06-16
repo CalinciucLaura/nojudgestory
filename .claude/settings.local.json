@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(npm --version)",
-      "Bash(pkill -f \"vite\")"
+      "Bash(pkill -f \"vite\")",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(npm run *)"
     ]
   }
 }
