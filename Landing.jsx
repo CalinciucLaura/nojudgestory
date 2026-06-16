@@ -33,16 +33,25 @@ const LP_STORIES = [
 
 const LP_PROMISES = ['anonim', 'fără critici', 'fără judecată', 'spațiu safe'];
 
+/* ───────────── scroll helper (avoids HashRouter conflict) ───────────── */
+function scrollTo(id) {
+  return (e) => {
+    e.preventDefault();
+    const el = id === 'top' ? document.body : document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+}
+
 /* ───────────── nav ───────────── */
 function LpNav() {
   return (
     <header className="lp-nav">
-      <a href="#top" className="lp-nav__logo" aria-label="No Judge Story"><img src="assets/logo.png" alt="No Judge Story" className="lp-nav__logo-img" /></a>
+      <a href="#top" className="lp-nav__logo" aria-label="No Judge Story" onClick={scrollTo('top')}><img src="assets/logo.png" alt="No Judge Story" className="lp-nav__logo-img" /></a>
       <nav className="lp-nav__links">
-        <a href="#povesti">Povești</a>
-        <a href="#categorii">Categorii</a>
-        <a href="#fondatoare">Despre</a>
-        <a href="#acces-anticipat" className="lp-nav__cta">Intră pe listă</a>
+        <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
+        <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
+        <a href="#fondatoare" onClick={scrollTo('fondatoare')}>Despre</a>
+        <a href="#acces-anticipat" className="lp-nav__cta" onClick={scrollTo('acces-anticipat')}>Intră pe listă</a>
       </nav>
     </header>
   );
@@ -110,7 +119,7 @@ const LP_HERO_CARDS = [
 ];
 
 function LpHero() {
-  const go = (e) => { e.preventDefault(); document.getElementById('acces-anticipat').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  const go = scrollTo('acces-anticipat');
   return (
     <section className="lp-hero" id="top">
       <div className="lp-hero__wash" aria-hidden="true" />
@@ -184,7 +193,7 @@ function LpFeaturedArticles({ onOpen }) {
           <em className="lp-fa__em-dark">în a-și exprima</em>{' '}
           <em className="lp-fa__em-grad">poveștile de viață</em>
         </h2>
-        <a href="#povesti" className="lp-fa__discover">Descoperă poveștile</a>
+        <a href="#povesti" className="lp-fa__discover" onClick={scrollTo('povesti')}>Descoperă poveștile</a>
       </FadeUp>
 
       <div className="lp-fa__row1">
@@ -356,10 +365,10 @@ function LpFooter() {
       <div className="lp-foot__top">
         <LpLogo size={24} />
         <nav className="lp-foot__nav">
-          <a href="#povesti">Povești</a>
-          <a href="#categorii">Categorii</a>
-          <a href="#fondatoare">Despre</a>
-          <a href="#acces-anticipat">Acces anticipat</a>
+          <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
+          <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
+          <a href="#fondatoare" onClick={scrollTo('fondatoare')}>Despre</a>
+          <a href="#acces-anticipat" onClick={scrollTo('acces-anticipat')}>Acces anticipat</a>
         </nav>
       </div>
       <div className="lp-foot__bottom">
@@ -674,9 +683,10 @@ function LandingStyles() {
       .lp-about__deco { width: 100px; height: 130px; }
       .lp-about__stats { grid-template-columns: 1fr 1fr; }
       .lp-fa__mini-box { grid-column: span 1; }
-      .lp-hero__cards { grid-template-columns: 1fr; gap: 16px; }
+      .lp-hero__cards { display: flex; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 14px; padding-bottom: 12px; scrollbar-width: none; }
+      .lp-hero__cards::-webkit-scrollbar { display: none; }
+      .lp-hc { flex: 0 0 80vw; max-width: 320px; min-height: 380px; scroll-snap-align: start; }
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 0; }
-      .lp-hc { min-height: 380px; }
       .lp-promises__item { font-size: 18px; }
       .lp-foot { padding: 40px 20px; }
     }
