@@ -6,9 +6,9 @@ import { STORIES } from './StoriesData';
 
 const LP_AVATARS = [1, 2, 3, 4].map((n) => `assets/avatar-${n}.jpg`);
 
-const LP_FA_LARGE  = STORIES.filter(s => ['relatie-6-ani','maternitate-singuratatate'].includes(s.id));
-const LP_FA_MINI   = STORIES.filter(s => ['demisie-fara-job','imagine-de-sine','anxietate'].includes(s.id));
-const LP_FA_BOTTOM = STORIES.filter(s => ['prietenie-pierduta','la-40-de-ani','burnout'].includes(s.id));
+const LP_FA_LARGE = STORIES.filter(s => ['relatie-6-ani', 'maternitate-singuratatate'].includes(s.id));
+const LP_FA_MINI = STORIES.filter(s => ['demisie-fara-job', 'imagine-de-sine', 'anxietate'].includes(s.id));
+const LP_FA_BOTTOM = STORIES.filter(s => ['prietenie-pierduta', 'la-40-de-ani', 'burnout'].includes(s.id));
 
 const LP_STORIES = [
   {
@@ -102,7 +102,7 @@ function FadeUp({ children, delay = 0, as: Tag = 'div', className, style, id }) 
 /* ───────────── hero (fidel Figma) ───────────── */
 const LP_HERO_CARDS = [
   {
-    img: 'assets/woman3.jpg', av: 'assets/avatar-1.jpg',
+    img: 'assets/child.jpg', av: 'assets/avatar-1.jpg',
     quote: 'M-am simțit exclusă…',
     body: 'Până am găsit un loc unde puteam scrie fără să-mi fie teamă de judecată.',
   },
@@ -151,8 +151,8 @@ function LpHero() {
             </AnimatedCTA>
           </div>
           <span className="lp-hero__proof">
-            <LpAvatarStack avatars={LP_AVATARS} more="+12k" size={34} light={false} />
-            <span><strong>12.000+</strong> femei deja pe listă</span>
+            <LpAvatarStack avatars={LP_AVATARS} more="+280" size={34} light={false} />
+            <span><strong>300+</strong> femei deja pe listă</span>
           </span>
         </div>
       </div>
@@ -226,10 +226,10 @@ function LpFeaturedArticles({ onOpen }) {
 
 /* ───────────── despre / stats ───────────── */
 const LP_STATS = [
-  { num: '12K+', label: 'femei înscrise' },
-  { num: '500+', label: 'povești scrise' },
-  { num: '20+', label: 'categorii' },
   { num: '100%', label: 'anonim' },
+  { num: 'Zero', label: 'judecăți' },
+  { num: 'Safe', label: 'spațiu protejat' },
+  { num: 'Real', label: 'povești de viață' },
 ];
 
 function BotanicDeco() {
@@ -259,8 +259,7 @@ function LpAbout() {
       <FadeUp>
         <h2 className="lp-about__title">Despre ce este vorba pe scurt</h2>
         <p className="lp-about__sub">
-          Primul spațiu destinat femeilor ce își doresc să își exprime poveștile de viață
-          într-un mediu sigur, anonim și fără judecată.
+          Un loc unde poți scrie ce nu poți spune cu voce tare — fără să-ți fie teamă că ești judecată.
         </p>
       </FadeUp>
 
@@ -281,11 +280,12 @@ function LpAbout() {
         <div className="lp-about__desc">
           <h3 className="lp-about__desc-head">Despre</h3>
           <p className="lp-about__desc-body">
-            No Judge Story s-a născut dintr-o nevoie reală — aceea de a avea un loc unde
-            să poți fi sinceră fără să-ți fie teamă. Un spațiu unde poveștile tale nu sunt
-            judecate, corectate sau minimizate. Unde alte femei te înțeleg pentru că au
-            trăit lucruri asemănătoare. Suntem o comunitate în construcție, și fiecare
-            poveste împărtășită o face mai puternică.
+            Sunt lucruri pe care le ții în tine — despre relații, familie, muncă, sau pur și
+            simplu despre cum te simți. Nu le spui prietenelor pentru că nu vrei să pară că te
+            plângi. Nu le spui partenerului pentru că e complicat. Și atunci le ții.
+            <br /><br />
+            Aici le poți scrie. Anonim, dacă vrei. Fără să te corecteze cineva, fără sfaturi
+            nesolicitate, fără „și eu am pățit, dar...". Doar să le spui.
           </p>
         </div>
       </FadeUp>
@@ -295,18 +295,13 @@ function LpAbout() {
 
 /* ───────────── povești ───────────── */
 const LP_CATEGORIES = [
-  { label: 'artă',            img: 'assets/about-portrait-sm.jpg' },
-  { label: 'căsnicie',        img: 'assets/avatar-1.jpg' },
-  { label: 'prietenii',       img: 'assets/avatar-2.jpg' },
-  { label: 'familie',         img: 'assets/avatar-3.jpg' },
-  { label: 'business',        img: 'assets/avatar-4.jpg' },
-  { label: 'natură',          img: 'assets/story-feature-sm.jpg' },
-  { label: 'viața de mămică', img: 'assets/founder-sm.jpg' },
-  { label: 'călătorii',       img: 'assets/coffee.jpg' },
-  { label: 'copilărie',       img: 'assets/story-feature-sm.jpg' },
-  { label: 'carieră',         img: 'assets/about-portrait-sm.jpg' },
-  { label: 'relații',         img: 'assets/avatar-1.jpg' },
-  { label: 'beauty',          img: 'assets/avatar-2.jpg' },
+  { label: 'căsnicie', img: 'assets/marriage.jpg' },
+  { label: 'prietenii', img: 'assets/friends2.jpg' },
+  { label: 'viața de mămică', img: 'assets/motherhood.jpg' },
+  { label: 'copilărie', img: 'assets/kid.webp' },
+  { label: 'carieră', img: 'assets/boss.jpg' },
+  { label: 'relații', img: 'assets/relationship.jpg' },
+  { label: 'despre mine', img: 'assets/beauty.jpg' },
 ];
 
 function LpCategories() {
@@ -315,15 +310,14 @@ function LpCategories() {
       <FadeUp>
         <h2 className='lp-cats__title'>Împărtășește din experiențele tale</h2>
       </FadeUp>
-      <FadeUp delay={0.1}>
-        <div className='lp-cats__grid'>
-          {LP_CATEGORIES.map((c) => (
-            <div className='lp-cat-chip' key={c.label}>
-              <img className='lp-cat-chip__img' src={c.img} alt={c.label} />
-              <span className='lp-cat-chip__label'>{c.label}</span>
-            </div>
-          ))}
-        </div>
+      <FadeUp delay={0.08} className='lp-cats__grid'>
+        {LP_CATEGORIES.map((c) => (
+          <div className='lp-cat-card' key={c.label}>
+            <div className='lp-cat-card__img' style={{ backgroundImage: `url(${c.img})` }} />
+            <div className='lp-cat-card__overlay' />
+            <span className='lp-cat-card__label'>{c.label}</span>
+          </div>
+        ))}
       </FadeUp>
     </section>
   );
@@ -340,17 +334,19 @@ function LpFounder() {
       </FadeUp>
       <FadeUp delay={0.15}>
         <div className="lp-founder__letter">
-          <span className="lp-eyebrow lp-eyebrow--brand">Scrisoare de la fondatoare</span>
+          <span className="lp-eyebrow lp-eyebrow--brand">Scrisoare de la mine, pentru tine</span>
           <p className="lp-founder__hand">
-                    Te încurajez și pe tine să scrii, chiar dacă simți că nu ai suficient talent. Sinceră să fiu, nici eu nu cred că am, dar îmi place să-mi exprim gândurile și știu că și tu simți nevoia să faci asta.
-        Am creat NoJudgeStory, o comunitate dedicată celor care își doresc să-și împărtășească poveștile de viață.
-        Nu este nevoie să scrii despre cum ai câștigat Premiul Nobel. Povestește-ne despre tine, despre ceea ce simți, despre experiențele care te-au format, despre provocările prin care ai trecut sau despre lucrurile care te inspiră. Povestea ta poate inspira alte persoane din această comunitate mai mult decat crezi!
-        Aici ste un spațiu sigur, în care nimeni nu te judecă, unde poți scrie exact așa cum simți, cu sau fara anonimat.
-        Nu ai idee câte persoane au trecut prin experiențe asemănătoare cu ale tale. Poate că, împărtășind ceea ce ai pe suflet, vei ajuta pe cineva să se simtă mai puțin singur. Bine ai venit in comunitate! ;)
-        <br/>
-        <br/>
-        With love,
-        Laura
+            Te încurajez și pe tine să scrii, chiar dacă simți că nu ai talent. Sinceră să fiu, nici eu nu am, dar îmi place să-mi exprim gândurile și știu că și tu simți la fel. <br />
+            Am creat NoJudgeStory, o comunitate unde îți poți împărtăși povestile de viata fără teama de a fi judecat/a.
+            Povestește-ne despre tine, despre ceea ce simti, gandesti sau despre provocările prin care ai trecut, povestea ta poate inspira alte persoane din această comunitate mai mult decat crezi.
+            Aici ne ghidam dupa o regula principala „Nu ne judecăm”, consideram ca orice lucru poate fi frumos spus, cu respect si fara jigniri.
+            <br />
+            <br />
+            Bine ai venit in comunitate! ;)
+            <br />
+            <br />
+            With love,
+            Laura
           </p>
           <span className="lp-founder__role">fondatoare, No Judge Story</span>
         </div>
@@ -607,22 +603,37 @@ function LandingStyles() {
       line-height: var(--lh-body); color: var(--text-body); margin: 0; }
 
     /* categories */
-    .lp-cats { position: relative; max-width: 1160px; margin: 0 auto; padding: 40px 32px 80px; }
-    .lp-cats::before { content:''; position:absolute; right:-40px; top:50%; transform:translateY(-50%);
-      width: 600px; height: 600px; background: url('/assets/water-mark.png') center/contain no-repeat;
-      opacity: 0.35; z-index: 0; pointer-events: none; }
-    .lp-cats__title, .lp-cats__grid { position: relative; z-index: 1; }
+    .lp-cats { position: relative; width: 100%; padding: 40px 0 20px; }
     .lp-cats__title { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-semibold);
-      font-size: clamp(28px, 3vw, 42px); color: var(--text-strong); margin: 0 0 40px; }
-    .lp-cats__grid { display:flex; flex-wrap:wrap; gap: 14px; }
-    .lp-cat-chip { display:flex; align-items:center; gap: 10px;
-      background: #fff; border-radius: 999px; padding: 6px 20px 6px 6px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      cursor: pointer; transition: box-shadow 0.2s, transform 0.2s; }
-    .lp-cat-chip:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.12); transform: translateY(-1px); }
-    .lp-cat-chip__img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink:0; }
-    .lp-cat-chip__label { font-family: var(--font-sans); font-size: 15px; font-weight: var(--fw-medium);
-      color: var(--text-strong); white-space: nowrap; }
+      font-size: clamp(28px, 3vw, 42px); color: var(--text-strong);
+      max-width: 1160px; margin: 0 auto 24px; padding: 0 32px; }
+    .lp-cats__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+
+    .lp-cat-card { position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 2 / 3; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+      transition: transform 0.4s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.4s ease; }
+    .lp-cat-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,0.18); }
+    .lp-cat-card__img { position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.55s cubic-bezier(0.22,0.61,0.36,1); }
+    .lp-cat-card:hover .lp-cat-card__img { transform: scale(1.07); }
+    .lp-cat-card__overlay { position: absolute; inset: 0;
+      background: linear-gradient(180deg,
+        rgba(18,5,8,0) 30%,
+        rgba(18,5,8,0.45) 65%,
+        rgba(18,5,8,0.82) 100%);
+      transition: background 0.35s; }
+    .lp-cat-card:hover .lp-cat-card__overlay {
+      background: linear-gradient(180deg,
+        rgba(243,72,109,0.08) 0%,
+        rgba(18,5,8,0.50) 55%,
+        rgba(18,5,8,0.88) 100%); }
+    .lp-cat-card__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 14px 14px;
+      font-family: var(--font-sans); font-size: 14px; font-weight: var(--fw-semibold);
+      color: #fff; letter-spacing: 0.01em;
+      transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1); }
+    .lp-cat-card:hover .lp-cat-card__label { transform: translateY(-3px); }
 
     /* founder */
     .lp-founder { max-width: 1060px; margin: 0 auto; padding: 64px 32px;
@@ -630,7 +641,7 @@ function LandingStyles() {
     .lp-founder__portrait { border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-md);
       aspect-ratio: 4 / 5; }
     .lp-founder__portrait img { width:100%; height:100%; object-fit: cover; object-position: center 28%; display:block; }
-    .lp-founder__hand { font-family: 'Gloria Hallelujah', cursive; font-size: 18px; line-height: 1.5;
+    .lp-founder__hand { font-family: 'EB Garamond', ui-serif, Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.5;
       color: var(--text-body); margin: 18px 0 0; }
     .lp-founder__sign { font-family: 'Gloria Hallelujah', cursive; font-size: 17px; color: var(--njs-rose-deep);
       margin: 18px 0 0; }
@@ -682,6 +693,8 @@ function LandingStyles() {
       .lp-hero__email-wrap { flex-direction: column; align-items: stretch; }
       .lp-hero__email-input { width: 100%; text-align: center; }
       .lp-hero__email-wrap .anim-cta { justify-content: center; }
+      .lp-cats__grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+      .lp-cats__title { padding: 0 20px; }
       .lp-foot { padding: 40px 20px; }
     }
   `}</style>;

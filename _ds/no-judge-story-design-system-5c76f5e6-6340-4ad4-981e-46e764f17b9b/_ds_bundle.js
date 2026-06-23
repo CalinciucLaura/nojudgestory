@@ -291,7 +291,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // Split editorial card: emotional story panel on the left, high-converting form on the right.
 // Self-contained; reads brand tokens from ../../styles.css.
 
-const NJS_TOPICS = ['relații', 'familie', 'carieră', 'prietenii', 'copilărie', 'călătorii', 'căsnicie', 'beauty', 'artă'];
+const NJS_TOPICS = ['relații', 'familie', 'carieră', 'prietenii', 'copilărie', 'călătorii', 'căsnicie', 'beauty'];
 function NjsField({
   label,
   optional,

@@ -1,7 +1,7 @@
 export const STORIES = [
   {
     id: 'relatie-6-ani',
-    img: 'assets/about-portrait-sm.jpg',
+    img: 'assets/baby.jpg',
     title: 'Am plecat după 6 ani. Nu m-am simțit niciodată mai liberă.',
     excerpt: 'Toată lumea din jur îmi spunea că sunt nebună. Că o relație de 6 ani nu se aruncă. Că o să regret. Nimeni nu știa cum era cu adevărat în spatele ușilor închise — nici eu nu știam cum să explic. Până când am scris. Și atunci am înțeles.',
     date: '03/04/2025',
@@ -32,7 +32,7 @@ Uneori e singurătate. Dar e o singurătate care nu mă obosește.`,
   },
   {
     id: 'maternitate-singuratatate',
-    img: 'assets/story-feature-sm.jpg',
+    img: 'assets/blog.jpg',
     title: 'Nimeni nu mi-a spus că maternitatea poate fi și singurătate.',
     excerpt: 'Toată lumea îți spune că va fi frumos. Că vei iubi cu o intensitate pe care nu ai mai simțit-o. Și e adevărat. Dar nimeni nu îți spune că poți ține un bebeluș în brațe și să te simți complet singură. Eu am simțit asta și mi-a fost rușine ani de zile.',
     date: '17/04/2025',
@@ -90,7 +90,7 @@ Mi-am găsit job după trei luni. Mai puțin bani la început, alt domeniu. Dar 
   },
   {
     id: 'imagine-de-sine',
-    img: 'assets/avatar-2.jpg',
+    img: 'assets/cat.jpg',
     title: 'Am 34 de ani și abia acum îmi place de mine.',
     excerpt: 'Nu a fost un moment anume. A fost o dimineață obișnuită când m-am uitat în oglindă și nu m-am mai criticat. Pur și simplu.',
     date: '21/03/2025',
@@ -146,7 +146,7 @@ Anxietatea nu a dispărut. Dar acum știu cum o cheamă, știu de unde vine, șt
   },
   {
     id: 'prietenie-pierduta',
-    img: 'assets/founder-sm.jpg',
+    img: 'assets/phone.jpg',
     title: 'Prietena mea cea mai bună nu mai există. A ales el în locul meu.',
     excerpt: 'Opt ani de prietenie. Sute de nopți în care am plâns una la cealaltă. Și într-o zi, pur și simplu, nu a mai răspuns la telefon. Am înțeles mult mai târziu că nu era vina mea.',
     date: '28/03/2025',
@@ -177,7 +177,7 @@ Am doliat prietenia asta ca pe o pierdere reală. Și cred că e important să r
   },
   {
     id: 'la-40-de-ani',
-    img: 'assets/coffee.jpeg',
+    img: 'assets/husband.jpg',
     title: 'La 40 de ani am început să trăiesc pentru mine. Nu era târziu.',
     excerpt: 'Toată viața am trăit pentru alții — pentru părinți, pentru soț, pentru copii. La 40 de ani am înscris la un curs de pictură fără să cer voie nimănui. A fost revoluționar.',
     date: '10/05/2025',
@@ -212,7 +212,7 @@ Nu știu dacă asta e revelația sau e un început. Dar mi-e bine.`,
   },
   {
     id: 'burnout',
-    img: 'assets/about-portrait-sm.jpg',
+    img: 'assets/couple.jpg',
     title: 'Burnout-ul nu arată ca în filme. Arată ca mine, zâmbind la birou.',
     excerpt: 'Nu am căzut dramatic. Nu am plâns în public. Am continuat să merg la muncă, să zâmbesc, să livrez. Pe interior mă stingeam încet, fără să știu cum să cer ajutor.',
     date: '22/04/2025',
