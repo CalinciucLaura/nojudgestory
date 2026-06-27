@@ -53,11 +53,7 @@ function LpNav() {
   return (
     <header className={`lp-nav${scrolled ? ' lp-nav--scrolled' : ''}`}>
       <a href="#top" className="lp-nav__logo" aria-label="No Judge Story" onClick={scrollTo('top')}><img src="assets/logo.png" alt="No Judge Story" className="lp-nav__logo-img" /></a>
-      <nav className="lp-nav__links">
-        <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
-        <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
-        <a href="#fondatoare" onClick={scrollTo('fondatoare')}>Despre</a>
-      </nav>
+      
     </header>
   );
 }
@@ -123,8 +119,10 @@ const LP_HERO_CARDS = [
   },
 ];
 
-function LpHero() {
-  const go = scrollTo('acces-anticipat');
+function LpHero({ email, setEmail }) {
+  const go = (e) => {
+    scrollTo('acces-anticipat')(e);
+  };
   return (
     <section className="lp-hero" id="top">
       <div className="lp-hero__wash" aria-hidden="true" />
@@ -145,6 +143,8 @@ function LpHero() {
               type="email"
               placeholder="adresa ta de email"
               aria-label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <AnimatedCTA href="#acces-anticipat" onClick={go}>
               Vreau acces anticipat
@@ -361,7 +361,7 @@ function LpFooter() {
   return (
     <footer className="lp-foot">
       <div className="lp-foot__top">
-        <LpLogo size={24} />
+        <a href="#top" onClick={scrollTo('top')}><img src="assets/logo.png" alt="No Judge Story" style={{ height: '32px', display: 'block' }} /></a>
         <nav className="lp-foot__nav">
           <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
           <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
@@ -378,7 +378,7 @@ function LpFooter() {
 }
 
 /* ───────────── pre-register modal ───────────── */
-function PreRegModal({ onClose }) {
+function PreRegModal({ onClose, initialEmail }) {
   React.useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -397,7 +397,7 @@ function PreRegModal({ onClose }) {
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
         </button>
-        <PreRegisterSection />
+        <PreRegisterSection initialEmail={initialEmail} />
       </div>
     </div>
   );
@@ -406,21 +406,22 @@ function PreRegModal({ onClose }) {
 /* ───────────── page ───────────── */
 function LandingPage() {
   const [showPreReg, setShowPreReg] = React.useState(false);
+  const [heroEmail, setHeroEmail] = React.useState('');
   return (
     <div className="lp-page">
       <LandingStyles />
       <LpNav />
       <main>
-        <LpHero />
+        <LpHero email={heroEmail} setEmail={setHeroEmail} />
 
         <LpFeaturedArticles onOpen={() => setShowPreReg(true)} onReadMore={() => setShowPreReg(true)} />
         <LpAbout />
         <LpCategories />
         <LpFounder />
-        <PreRegisterSection />
+        <PreRegisterSection initialEmail={heroEmail} />
       </main>
       <LpFooter />
-      {showPreReg && <PreRegModal onClose={() => setShowPreReg(false)} />}
+      {showPreReg && <PreRegModal onClose={() => setShowPreReg(false)} initialEmail={heroEmail} />}
     </div>
   );
 }
@@ -637,11 +638,11 @@ function LandingStyles() {
       line-height: var(--lh-body); color: var(--text-body); margin: 0; }
 
     /* categories */
-    .lp-cats { position: relative; width: 100%; padding: 40px 0 20px; }
+    .lp-cats { position: relative; width: 100%; padding: 40px 0 20px; text-align: center; }
     .lp-cats__title { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-semibold);
       font-size: clamp(28px, 3vw, 42px); color: var(--text-strong);
       max-width: 1160px; margin: 0 auto 24px; padding: 0 32px; }
-    .lp-cats__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+    .lp-cats__grid { display: grid; grid-template-columns: repeat(6, minmax(0, 160px)); gap: 10px; max-width: 1160px; margin: 0 auto; padding: 0 32px; justify-content: center; }
 
     .lp-cat-card { position: relative; border-radius: 12px; overflow: hidden;
       aspect-ratio: 2 / 3; cursor: pointer;
@@ -700,7 +701,8 @@ function LandingStyles() {
       animation: lp-modal-bg 0.22s ease both; }
     @keyframes lp-modal-bg { from { opacity:0; } to { opacity:1; } }
     .lp-modal-box { position: relative; width: 100%; max-width: 1060px;
-      border-radius: var(--radius-lg); overflow: hidden;
+      border-radius: var(--radius-lg); overflow-y: auto; overflow-x: hidden;
+      max-height: calc(100vh - 40px);
       background: var(--surface-page); box-shadow: 0 32px 80px rgba(0,0,0,0.38);
       animation: lp-modal-up 0.28s cubic-bezier(0.22,0.61,0.36,1) both; }
     @keyframes lp-modal-up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
@@ -718,7 +720,7 @@ function LandingStyles() {
 
     /* responsive */
     @media (max-width: 960px){
-      .lp-cats__grid { grid-template-columns: repeat(4, 1fr); }
+      .lp-cats__grid { grid-template-columns: repeat(3, minmax(0, 160px)); }
       .lp-hero__cards { grid-template-columns: 1fr 1fr; gap: 18px; }
       .lp-hc:nth-child(even) { margin-top: 0; }
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 48px; }
@@ -751,13 +753,16 @@ function LandingStyles() {
       .lp-hero__email-wrap { flex-direction: column; align-items: stretch; }
       .lp-hero__email-input { width: 100%; text-align: center; }
       .lp-hero__email-wrap .anim-cta { justify-content: center; }
-      .lp-cats__grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .lp-cats__grid { grid-template-columns: repeat(3, minmax(0, 140px)); gap: 8px; }
       .lp-cats__title { padding: 0 20px; }
       .lp-cat-card__label { font-size: 12px; padding: 12px 10px 10px; }
       .lp-foot { padding: 40px 20px; }
+      .lp-modal-overlay { padding: 16px; align-items: flex-start; padding-top: 16px; }
+      .lp-modal-box { max-height: calc(100vh - 32px); border-radius: 14px; }
+      .lp-modal-box .pr-story { display: none; }
     }
     @media (max-width: 380px){
-      .lp-cats__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .lp-cats__grid { grid-template-columns: repeat(2, minmax(0, 140px)); gap: 8px; }
     }
   `}</style>;
 }

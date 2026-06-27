@@ -65,9 +65,9 @@ function PrStoryPanel() {
 }
 
 /* ── form ── */
-function PrForm({ onDone }) {
+function PrForm({ onDone, initialEmail = '' }) {
   const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState(initialEmail);
   const [touched, setTouched] = React.useState(false);
 
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -77,6 +77,9 @@ function PrForm({ onDone }) {
     e.preventDefault();
     setTouched(true);
     if (!validEmail) return;
+    const params = new URLSearchParams({ email: email.trim(), name: name.trim() });
+    fetch('https://script.google.com/macros/s/AKfycbxbgkcv1-BX6voL2rozO_y9qd4t4Yjtn2yOPm8GCgV71YwYNmYOoAwVMTUyilWNZunU-A/exec?' + params)
+      .catch(() => {});
     onDone(name.trim());
   };
 
@@ -167,7 +170,7 @@ function PrSuccess({ name }) {
 }
 
 /* ── section ── */
-function PreRegisterSection() {
+function PreRegisterSection({ initialEmail = '' }) {
   const [done, setDone] = React.useState(false);
   const [name, setName] = React.useState('');
   const finish = (n) => { setName(n); setDone(true); };
@@ -192,7 +195,7 @@ function PreRegisterSection() {
         <div className="pr-card">
           <PrStoryPanel />
           <div className="pr-panel">
-            {done ? <PrSuccess name={name} /> : <PrForm onDone={finish} />}
+            {done ? <PrSuccess name={name} /> : <PrForm onDone={finish} initialEmail={initialEmail} />}
           </div>
         </div>
       </div>
