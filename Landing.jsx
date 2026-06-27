@@ -1,5 +1,5 @@
 // No Judge Story — Landing page
-import { useNavigate } from 'react-router-dom';
+
 import { Logo as LpLogo, Button as LpButton, TopicChip as LpTopicChip, AvatarStack as LpAvatarStack } from './ds';
 import { PreRegisterSection } from './PreRegister';
 import { STORIES } from './StoriesData';
@@ -19,13 +19,13 @@ const LP_STORIES = [
   },
   {
     cat: 'viața de mămică',
-    quote: 'Am scris noaptea, în timp ce alăptam. Nimeni nu m-a corectat, nimeni nu m-a judecat — doar m-au ascultat.',
+    quote: 'nu în sensul că nu am avut oameni în jurul meu, ci în sensul că nimeni nu părea să mă vadă cu adevărat. Eram prezentă în toate pozele, la toate mesele, la toate evenimentele, și totuși simțeam că dacă aș dispărea, lumea ar continua la fel. A durat mult să înțeleg că singurătatea nu e absența oamenilor, e absența conexiunii reale. Și că merităm cu toții să fim văzute, nu doar prezente.',
     who: 'anonim · 34 de ani',
     feature: true,
   },
   {
     cat: 'carieră',
-    quote: 'Mi-am dat demisia și mi-a fost frică să spun cuiva. Aici am spus-o întâi — și am respirat.',
+    quote: 'Nimeni nu îți spune că e normal să nu știi ce vrei. Că poți avea 25, 30 sau 40 de ani și să fii în continuare în căutare. Nu ești în urmă și nu ai ratat nimic. Ești exact unde trebuie să fii pentru că fiecare experiență, chiar și cele care nu ți s-au potrivit, te-au adus mai aproape de tine. Claritatea vine din mișcare, nu din așteptare.',
     who: 'anonim · 41 de ani',
     feature: false,
   },
@@ -119,7 +119,7 @@ const LP_HERO_CARDS = [
   {
     img: 'assets/woman.jpg', av: 'assets/avatar-4.jpg',
     quote: 'Toată viața mea am fost singură',
-    body: 'Am scris noaptea, în timp ce alăptam. Nimeni nu m-a judecat — m-au ascultat.',
+    body: 'nu în sensul că nu am avut oameni în jurul meu, ci în sensul că nimeni nu părea să mă vadă cu adevărat. Eram prezentă în toate pozele, la toate mesele, la toate evenimentele, și totuși simțeam că dacă aș dispărea, lumea ar continua la fel. A durat mult să înțeleg că singurătatea nu e absența oamenilor, e absența conexiunii reale. Și că merităm cu toții să fim văzute, nu doar prezente.',
   },
 ];
 
@@ -202,11 +202,11 @@ function LpFeaturedArticles({ onOpen, onReadMore }) {
         <FadeUp delay={0.2} className="lp-fa__mini-box">
           {LP_FA_MINI.map((a, i) => (
             <article key={i} className="lp-fa__mini lp-fa__card--click" onClick={() => onOpen(a.id)}>
-              <div className="lp-fa__mini-top">
-                <h3 className="lp-fa__mini-title">{a.title}</h3>
+              <div className="lp-fa__mini-body">
                 <img className="lp-fa__mini-img" src={a.img} alt="" />
+                <h3 className="lp-fa__mini-title">{a.title}</h3>
+                <p className="lp-fa__mini-excerpt">{a.excerpt}</p>
               </div>
-              <p className="lp-fa__mini-excerpt">{a.excerpt}</p>
               <button className="lp-fa__read-more" onClick={(e) => { e.stopPropagation(); onReadMore(); }}>Citește mai mult</button>
               {i < LP_FA_MINI.length - 1 && <hr className="lp-fa__mini-sep" />}
             </article>
@@ -300,7 +300,6 @@ const LP_CATEGORIES = [
   { label: 'căsnicie', img: 'assets/marriage.jpg' },
   { label: 'prietenii', img: 'assets/friends2.jpg' },
   { label: 'viața de mămică', img: 'assets/motherhood.jpg' },
-  { label: 'copilărie', img: 'assets/kid.webp' },
   { label: 'carieră', img: 'assets/boss.jpg' },
   { label: 'relații', img: 'assets/relationship.jpg' },
   { label: 'despre mine', img: 'assets/beauty.jpg' },
@@ -406,9 +405,7 @@ function PreRegModal({ onClose }) {
 
 /* ───────────── page ───────────── */
 function LandingPage() {
-  const navigate = useNavigate();
   const [showPreReg, setShowPreReg] = React.useState(false);
-  const openStory = (id) => navigate(`/povesti/${id}`);
   return (
     <div className="lp-page">
       <LandingStyles />
@@ -416,7 +413,7 @@ function LandingPage() {
       <main>
         <LpHero />
 
-        <LpFeaturedArticles onOpen={openStory} onReadMore={() => setShowPreReg(true)} />
+        <LpFeaturedArticles onOpen={() => setShowPreReg(true)} onReadMore={() => setShowPreReg(true)} />
         <LpAbout />
         <LpCategories />
         <LpFounder />
@@ -599,14 +596,14 @@ function LandingStyles() {
     .lp-fa__mini-box { border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg);
       padding: 24px 20px; display: flex; flex-direction: column; }
     .lp-fa__mini { display: flex; flex-direction: column; gap: 10px; }
-    .lp-fa__mini-top { display: flex; gap: 12px; align-items: flex-start; }
+    .lp-fa__mini-body { overflow: hidden; }
+    .lp-fa__mini-img { float: right; width: 68px; height: 68px; object-fit: cover;
+      border-radius: var(--radius-sm); margin-left: 12px; }
     .lp-fa__mini-title { font-family: var(--font-sans); font-weight: var(--fw-bold);
-      font-size: var(--fs-sm); line-height: 1.35; color: var(--text-strong); margin: 0; flex: 1; }
-    .lp-fa__mini-img { width: 68px; height: 68px; object-fit: cover;
-      border-radius: var(--radius-sm); flex-shrink: 0; }
+      font-size: var(--fs-sm); line-height: 1.35; color: var(--text-strong); margin: 0 0 6px; }
     .lp-fa__mini-excerpt { font-family: var(--font-sans); font-size: 11.5px;
       line-height: 1.55; color: var(--text-muted); margin: 0;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .lp-fa__mini-sep { border: none; border-top: 1px solid var(--border-subtle); margin: 16px 0; }
 
     /* despre / stats */
@@ -721,6 +718,7 @@ function LandingStyles() {
 
     /* responsive */
     @media (max-width: 960px){
+      .lp-cats__grid { grid-template-columns: repeat(4, 1fr); }
       .lp-hero__cards { grid-template-columns: 1fr 1fr; gap: 18px; }
       .lp-hc:nth-child(even) { margin-top: 0; }
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 48px; }
@@ -753,9 +751,13 @@ function LandingStyles() {
       .lp-hero__email-wrap { flex-direction: column; align-items: stretch; }
       .lp-hero__email-input { width: 100%; text-align: center; }
       .lp-hero__email-wrap .anim-cta { justify-content: center; }
-      .lp-cats__grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+      .lp-cats__grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .lp-cats__title { padding: 0 20px; }
+      .lp-cat-card__label { font-size: 12px; padding: 12px 10px 10px; }
       .lp-foot { padding: 40px 20px; }
+    }
+    @media (max-width: 380px){
+      .lp-cats__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     }
   `}</style>;
 }

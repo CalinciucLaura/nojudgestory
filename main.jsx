@@ -7,14 +7,12 @@ window.React = React;
 import './_ds/no-judge-story-design-system-5c76f5e6-6340-4ad4-981e-46e764f17b9b/styles.css';
 import './index.css';
 import LandingPage from './Landing';
-import StoryPage from './StoryPage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/povesti/:id" element={<StoryPage />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>

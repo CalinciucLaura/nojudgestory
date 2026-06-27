@@ -14,7 +14,7 @@ const PR_BENEFITS = [
   },
   {
     title: 'Acces garantat la lansare',
-    body: 'După care intri doar dacă ești invitată de cineva din comunitate.',
+    body: 'Faci deja parte ca fondatoare, ulterior tu decizi catre cine oferi invitatiile',
   },
 ];
 
@@ -343,13 +343,24 @@ function PrStyles() {
       .pr-panel { padding: 34px 28px 32px; }
     }
     @media (max-width: 540px){
-      .pr-inner { padding: 56px 18px; }
-      .pr-headline { font-size: 34px; }
+      .pr-inner { padding: 48px 16px 40px; }
+      .pr-headline { font-size: 28px; }
       .pr-sub { font-size: var(--fs-body); }
+      .pr-head { margin-bottom: 24px; }
       .pr-row { grid-template-columns: 1fr; }
-      .pr-panel { padding: 28px 22px 28px; }
+      .pr-card { max-width: 100%; border-radius: var(--radius-md); }
+      .pr-story { min-height: 180px; padding: 20px; }
+      .pr-quote { font-size: 18px; margin: 10px 0 14px; }
+      .pr-panel { padding: 24px 20px 28px; }
+      .pr-title { font-size: var(--fs-h3); }
       .pr-ref { flex-direction: column; }
-      .pr-ref__link { justify-content:center; }
+      .pr-ref__link { justify-content: center; }
+      .pr-cta-btn { font-size: 15px; padding: 15px 20px; }
+    }
+    @media (max-width: 380px){
+      .pr-inner { padding: 36px 12px 32px; }
+      .pr-headline { font-size: 24px; }
+      .pr-panel { padding: 20px 16px 24px; }
     }
   `}</style>;
 }
