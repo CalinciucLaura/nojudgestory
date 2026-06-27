@@ -103,22 +103,22 @@ function FadeUp({ children, delay = 0, as: Tag = 'div', className, style, id }) 
 const LP_HERO_CARDS = [
   {
     img: 'assets/child.jpg', av: 'assets/avatar-1.jpg',
-    quote: 'M-am simțit exclusă…',
-    body: 'Până am găsit un loc unde puteam scrie fără să-mi fie teamă de judecată.',
+    quote: 'Divorțul nu înseamnă că ai eșuat',
+    body: 'Divorțul nu înseamnă că ai eșuat, înseamnă că ai ales să nu mai trăiești într-o variantă greșită a vieții tale. Ca mamă singură, o să ai zile în care te simți copleșită și zile în care o să realizezi cât de mult poți duce pe umerii tăi. Permite-ți ambele. Copilul tău nu are nevoie de o mamă perfectă, are nevoie de o mamă prezentă și sinceră, iar tu ești deja asta. Ia-o o zi pe rând, cere ajutor fără să te simți vinovată și nu uita că grija față de tine nu e un lux, e o necesitate.',
   },
   {
     img: 'assets/friends.jpg', av: 'assets/avatar-2.jpg',
-    quote: 'Credeam că sunt singura.',
-    body: 'Aici am citit zeci de povești care erau, de fapt, ale mele.',
+    quote: 'Cum va mai faceti prieteni dupa 25 de ani?',
+    body: 'După 25 de ani, lumea îți spune că e greu să-ți mai faci prieteni noi și sincer, are dreptate că e diferit. Dar diferit nu înseamnă imposibil. Înseamnă că acum alegi mai conștient, că nu mai aștepți ca magia să se întâmple de la sine, ci ieși în întâmpinarea ei. Prieteniile de după 25 de ani nu sunt mai puțin autentice, sunt mai câștigate. Și tocmai de aceea valorează mai mult.'
   },
   {
     img: 'assets/woman2.jpg', av: 'assets/avatar-3.jpg',
-    quote: 'Am scris și am respirat.',
-    body: 'Mi-am dat demisia și mi-a fost frică să spun cuiva. Aici am spus-o întâi.',
+    quote: 'M-am obișnuit cu ideea că o sa fiu singura o perioada lunga',
+    body: 'Să te obișnuiești cu ideea că vei fi singură o perioadă poate părea o formă de protecție după dezamăgiri, dar e important să nu o transformi într-o concluzie despre viitorul tău. Poți să accepți cum stau lucrurile acum fără să crezi că așa vor rămâne mereu. Faptul că ești singură în acest moment nu înseamnă că nu vei mai avea relații sau că nu vei întâlni pe cineva potrivit, ci doar că treci printr-o etapă în care ești mai precaută și ai nevoie de timp.',
   },
   {
     img: 'assets/woman.jpg', av: 'assets/avatar-4.jpg',
-    quote: 'Pentru prima dată, ascultată.',
+    quote: 'Toată viața mea am fost singură',
     body: 'Am scris noaptea, în timp ce alăptam. Nimeni nu m-a judecat — m-au ascultat.',
   },
 ];
@@ -151,8 +151,8 @@ function LpHero() {
             </AnimatedCTA>
           </div>
           <span className="lp-hero__proof">
-            <LpAvatarStack avatars={LP_AVATARS} more="+280" size={34} light={false} />
-            <span><strong>300+</strong> femei deja pe listă</span>
+            <LpAvatarStack avatars={LP_AVATARS} more="+180" size={34} light={false} />
+            <span>femei deja pe listă</span>
           </span>
         </div>
       </div>
@@ -175,7 +175,7 @@ function LpHero() {
 
 
 /* ───────────── featured articles ───────────── */
-function LpFeaturedArticles({ onOpen }) {
+function LpFeaturedArticles({ onOpen, onReadMore }) {
   return (
     <section className="lp-fa" id="categorii">
       <FadeUp>
@@ -193,7 +193,10 @@ function LpFeaturedArticles({ onOpen }) {
             <img className="lp-fa__card-img" src={a.img} alt="" />
             <h3 className="lp-fa__card-title lp-fa__card-title--lg">{a.title}</h3>
             <p className="lp-fa__card-excerpt">{a.excerpt}</p>
-            <span className="lp-fa__card-meta">{a.date} · {a.read}</span>
+            <div className="lp-fa__card-foot">
+              <span className="lp-fa__card-meta">{a.date} · {a.read}</span>
+              <button className="lp-fa__read-more" onClick={(e) => { e.stopPropagation(); onReadMore(); }}>Citește mai mult</button>
+            </div>
           </FadeUp>
         ))}
         <FadeUp delay={0.2} className="lp-fa__mini-box">
@@ -204,6 +207,7 @@ function LpFeaturedArticles({ onOpen }) {
                 <img className="lp-fa__mini-img" src={a.img} alt="" />
               </div>
               <p className="lp-fa__mini-excerpt">{a.excerpt}</p>
+              <button className="lp-fa__read-more" onClick={(e) => { e.stopPropagation(); onReadMore(); }}>Citește mai mult</button>
               {i < LP_FA_MINI.length - 1 && <hr className="lp-fa__mini-sep" />}
             </article>
           ))}
@@ -216,7 +220,10 @@ function LpFeaturedArticles({ onOpen }) {
             <img className="lp-fa__card-img" src={a.img} alt="" />
             <h3 className="lp-fa__card-title">{a.title}</h3>
             <p className="lp-fa__card-excerpt">{a.excerpt}</p>
-            <span className="lp-fa__card-meta">{a.date} · {a.read}</span>
+            <div className="lp-fa__card-foot">
+              <span className="lp-fa__card-meta">{a.date} · {a.read}</span>
+              <button className="lp-fa__read-more" onClick={(e) => { e.stopPropagation(); onReadMore(); }}>Citește mai mult</button>
+            </div>
           </FadeUp>
         ))}
       </div>
@@ -259,7 +266,7 @@ function LpAbout() {
       <FadeUp>
         <h2 className="lp-about__title">Despre ce este vorba pe scurt</h2>
         <p className="lp-about__sub">
-          Un loc unde poți scrie ce nu poți spune cu voce tare — fără să-ți fie teamă că ești judecată.
+          Pentru poveștile care merită să fie spuse, dar nu știau unde.
         </p>
       </FadeUp>
 
@@ -280,12 +287,7 @@ function LpAbout() {
         <div className="lp-about__desc">
           <h3 className="lp-about__desc-head">Despre</h3>
           <p className="lp-about__desc-body">
-            Sunt lucruri pe care le ții în tine — despre relații, familie, muncă, sau pur și
-            simplu despre cum te simți. Nu le spui prietenelor pentru că nu vrei să pară că te
-            plângi. Nu le spui partenerului pentru că e complicat. Și atunci le ții.
-            <br /><br />
-            Aici le poți scrie. Anonim, dacă vrei. Fără să te corecteze cineva, fără sfaturi
-            nesolicitate, fără „și eu am pățit, dar...". Doar să le spui.
+Există momente când ai nevoie de un loc unde sinceritatea nu te costă nimic. NoJudgeStory e acea comunitate, un spațiu creat de femei pentru femei, unde poveștile de viață sunt împărtășite cu curaj și primite cu respect. Aici nu există judecată, există doar oameni care se înțeleg pentru că au trecut prin lucruri asemănătoare.
           </p>
         </div>
       </FadeUp>
@@ -376,9 +378,36 @@ function LpFooter() {
   );
 }
 
+/* ───────────── pre-register modal ───────────── */
+function PreRegModal({ onClose }) {
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="lp-modal-overlay" onClick={onClose}>
+      <div className="lp-modal-box" onClick={(e) => e.stopPropagation()}>
+        <button className="lp-modal-close" onClick={onClose} aria-label="Inchide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        </button>
+        <PreRegisterSection />
+      </div>
+    </div>
+  );
+}
+
 /* ───────────── page ───────────── */
 function LandingPage() {
   const navigate = useNavigate();
+  const [showPreReg, setShowPreReg] = React.useState(false);
   const openStory = (id) => navigate(`/povesti/${id}`);
   return (
     <div className="lp-page">
@@ -387,13 +416,14 @@ function LandingPage() {
       <main>
         <LpHero />
 
-        <LpFeaturedArticles onOpen={openStory} />
+        <LpFeaturedArticles onOpen={openStory} onReadMore={() => setShowPreReg(true)} />
         <LpAbout />
         <LpCategories />
         <LpFounder />
         <PreRegisterSection />
       </main>
       <LpFooter />
+      {showPreReg && <PreRegModal onClose={() => setShowPreReg(false)} />}
     </div>
   );
 }
@@ -556,9 +586,15 @@ function LandingStyles() {
       font-size: var(--fs-body); line-height: 1.35; color: var(--text-strong); margin: 4px 0 0; }
     .lp-fa__card-title--lg { font-size: var(--fs-lead); }
     .lp-fa__card-excerpt { font-family: var(--font-sans); font-size: var(--fs-sm);
-      line-height: 1.55; color: var(--text-muted); margin: 0; }
-    .lp-fa__card-meta { font-family: var(--font-sans); font-size: var(--fs-xs);
-      color: var(--text-muted); margin-top: 2px; }
+      line-height: 1.55; color: var(--text-muted); margin: 0;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lp-fa__card-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 2px; }
+    .lp-fa__card-meta { font-family: var(--font-sans); font-size: var(--fs-xs); color: var(--text-muted); }
+    .lp-fa__read-more { background: none; border: none; padding: 0; font-family: var(--font-sans);
+      font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: var(--njs-rose-deep);
+      cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+      white-space: nowrap; transition: color 0.2s; }
+    .lp-fa__read-more:hover { color: var(--njs-rose); }
 
     .lp-fa__mini-box { border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg);
       padding: 24px 20px; display: flex; flex-direction: column; }
@@ -569,7 +605,8 @@ function LandingStyles() {
     .lp-fa__mini-img { width: 68px; height: 68px; object-fit: cover;
       border-radius: var(--radius-sm); flex-shrink: 0; }
     .lp-fa__mini-excerpt { font-family: var(--font-sans); font-size: 11.5px;
-      line-height: 1.55; color: var(--text-muted); margin: 0; }
+      line-height: 1.55; color: var(--text-muted); margin: 0;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .lp-fa__mini-sep { border: none; border-top: 1px solid var(--border-subtle); margin: 16px 0; }
 
     /* despre / stats */
@@ -658,6 +695,29 @@ function LandingStyles() {
     .lp-foot__bottom { display:flex; align-items:center; justify-content:space-between; gap: 16px;
       flex-wrap: wrap; margin-top: 22px; font-family: var(--font-sans); font-size: var(--fs-sm);
       color: var(--text-muted); }
+
+    /* modal */
+    .lp-modal-overlay { position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.62); backdrop-filter: blur(5px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      animation: lp-modal-bg 0.22s ease both; }
+    @keyframes lp-modal-bg { from { opacity:0; } to { opacity:1; } }
+    .lp-modal-box { position: relative; width: 100%; max-width: 1060px;
+      border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--surface-page); box-shadow: 0 32px 80px rgba(0,0,0,0.38);
+      animation: lp-modal-up 0.28s cubic-bezier(0.22,0.61,0.36,1) both; }
+    @keyframes lp-modal-up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+    .lp-modal-close { position: absolute; top: 14px; right: 14px; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,0.92); color: var(--text-body); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s ease, background 0.2s ease; }
+    .lp-modal-close:hover { background: #fff; transform: scale(1.1); }
+    .lp-modal-box .pr-band { border: none; }
+    .lp-modal-box .pr-head { display: none; }
+    .lp-modal-box .pr-inner { padding: 28px 28px 28px; }
+    .lp-modal-box .pr-story { min-height: 0; height: 100%; }
+    .lp-modal-box .pr-card { margin: 0; }
 
     /* responsive */
     @media (max-width: 960px){

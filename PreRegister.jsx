@@ -5,16 +5,16 @@ const PR_AVATARS = [1, 2, 3, 4].map((n) => `assets/avatar-${n}.jpg`);
 
 const PR_BENEFITS = [
   {
-    title: 'Acces înaintea tuturor',
-    body: 'Intri în comunitate la lansare, cu locul deja rezervat.',
+    title: 'Obține titlu de fondatoare',
+    body: 'Un statut permanent în comunitate, pentru că ai fost aici de la început.',
   },
   {
-    title: 'Cerc restrâns de fondatoare',
-    body: 'Faci parte din primul grup care dă tonul spațiului.',
+    title: '5 invitatii de access in platforma',
+    body: 'Tu decizi care dintre prietenele tale intră alături de tine ',
   },
   {
-    title: 'Primele povești, doar pentru tine',
-    body: 'Îți trimitem cele mai sincere povești înainte să fie publice.',
+    title: 'Acces garantat la lansare',
+    body: 'După care intri doar dacă ești invitată de cineva din comunitate.',
   },
 ];
 
@@ -57,10 +57,7 @@ function PrStoryPanel() {
           nu m-am simțit <em>judecată</em>.”
         </p>
         <div className="pr-story__foot">
-          <PrAvatarStack avatars={PR_AVATARS} more="+12k" size={40} light={true} />
-          <span className="pr-story__count">
-            <strong>12.000+</strong> femei sunt deja pe listă
-          </span>
+            <strong>180+</strong> femei sunt deja pe listă
         </div>
       </div>
     </aside>
@@ -90,12 +87,8 @@ function PrForm({ onDone }) {
       </span>
 
       <h3 className="pr-title">
-        Un loc al tău, <em>fără judecată</em>
+       Vreau să fac parte din comunitate ca <em>scriitoare/cititoare</em>
       </h3>
-      <p className="pr-lede">
-        Deschidem în curând un spațiu sigur și anonim pentru poveștile tale.
-        Lasă-ți emailul și intri pe listă înaintea tuturor.
-      </p>
 
       <ul className="pr-benefits">
         {PR_BENEFITS.map((b) => (
@@ -109,15 +102,6 @@ function PrForm({ onDone }) {
         ))}
       </ul>
 
-      <div className="pr-row">
-        <PrInput
-          label="Prenume"
-          optional
-          type="text"
-          placeholder="Cum să-ți spunem?"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
         <PrInput
           label="Email"
           type="email"
@@ -127,7 +111,6 @@ function PrForm({ onDone }) {
           onBlur={() => setTouched(true)}
           error={showErr ? 'Introdu o adresă de email validă ca să-ți păstrăm locul.' : ''}
         />
-      </div>
 
       <button type="submit" className="pr-cta-btn">
         <span className="pr-cta-btn__shimmer" aria-hidden="true" />
@@ -139,7 +122,7 @@ function PrForm({ onDone }) {
       </button>
 
       <p className="pr-trust">
-        <PrLock /> Fără spam. Anonimat garantat. Te anunțăm doar la lansare.
+        <PrLock /> Fără spam. Te anunțăm doar la lansare.
       </p>
     </form>
   );
@@ -174,43 +157,11 @@ function PrSuccess({ name }) {
       </span>
 
       <h3 className="pr-title">
-        Gata{name ? `, ${name}` : ''}. <em>Ți-am păstrat locul.</em>
+        Gata!<em>Ți-am păstrat locul.</em>
       </h3>
       <p className="pr-lede">
         Vei fi printre primele care intră când deschidem porțile.
-        Până atunci, urci pe listă invitând o prietenă.
       </p>
-
-      <div className="pr-pos">
-        <div className="pr-pos__main">
-          <span className="pr-pos__num">#{position.toLocaleString('ro-RO')}</span>
-          <span className="pr-pos__label">locul tău pe listă</span>
-        </div>
-        {invited > 0 && (
-          <span className="pr-pos__delta" key={invited}>
-            ↑ {invited * STEP} locuri · {invited} {invited === 1 ? 'invitație' : 'invitații'}
-          </span>
-        )}
-      </div>
-
-      <div className="pr-ref">
-        <span className="pr-ref__link">{refLink}</span>
-        <button type="button" className={'pr-ref__btn' + (copied ? ' is-copied' : '')} onClick={invite}>
-          {copied ? 'Link copiat' : 'Invită o prietenă'}
-        </button>
-      </div>
-      <p className="pr-ref__hint">Fiecare prietenă care intră te urcă cu {STEP} de locuri.</p>
-
-      <figure className="pr-note">
-        <img className="pr-note__av" src="assets/founder-sm.jpg" alt="Laura, fondatoare" />
-        <figcaption className="pr-note__body">
-          <p className="pr-note__text">
-            Ola chicas! Abia aștept să-ți citesc povestea. Fă-ți curaj și deschide-te —
-            aici e un spațiu safe.
-          </p>
-          <span className="pr-note__sign">With love, Laura — fondatoare</span>
-        </figcaption>
-      </figure>
     </div>
   );
 }
@@ -230,12 +181,11 @@ function PreRegisterSection() {
         <div className="pr-head">
           <span className="pr-eyebrow pr-eyebrow--brand">Acces anticipat</span>
           <h2 className="pr-headline">
-            Intră prima într-un spațiu<br />
-            unde poveștile <em>nu se judecă</em>.
+            Ne pregătim de lansare
+            și vrem ca tu să fii <em>cu noi de la început</em>
           </h2>
           <p className="pr-sub">
-            Ne pregătim de lansare. Înscrie-te pe listă și primești acces înaintea
-            tuturor, alături de primele femei care construiesc acest loc.
+            Dupa lansare, comunitatea nu mai e accesibilă oricui. Intri doar dacă cineva din interior te invită.
           </p>
         </div>
 
