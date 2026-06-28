@@ -306,7 +306,7 @@ function LpFounder() {
     <section className="lp-founder" id="fondatoare">
       <FadeUp delay={0}>
         <div className="lp-founder__portrait">
-          <img src="assets/founder-sm.jpg" alt="Laura, fondatoarea No Judge Story" />
+          <img src="assets/laura.png" alt="Laura, fondatoarea No Judge Story" />
         </div>
       </FadeUp>
       <FadeUp delay={0.15}>
