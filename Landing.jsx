@@ -4,11 +4,17 @@ import { Logo as LpLogo, Button as LpButton, TopicChip as LpTopicChip, AvatarSta
 import { PreRegisterSection } from './PreRegister';
 import { STORIES } from './StoriesData';
 
-const LP_AVATARS = [1, 2, 3, 4].map((n) => `assets/avatar-${n}.jpg`);
 
 const LP_FA_LARGE = STORIES.filter(s => ['relatie-6-ani', 'maternitate-singuratatate'].includes(s.id));
 const LP_FA_MINI = STORIES.filter(s => ['demisie-fara-job', 'imagine-de-sine', 'anxietate'].includes(s.id));
 const LP_FA_BOTTOM = STORIES.filter(s => ['prietenie-pierduta', 'la-40-de-ani', 'burnout'].includes(s.id));
+
+const LP_AVATARS = [
+  'assets/cat.jpg',
+  'assets/woman.jpg',
+  'assets/baby.jpg',
+  'assets/friends.jpg',
+]
 
 const LP_STORIES = [
   {
@@ -98,12 +104,12 @@ function FadeUp({ children, delay = 0, as: Tag = 'div', className, style, id }) 
 /* ───────────── hero (fidel Figma) ───────────── */
 const LP_HERO_CARDS = [
   {
-    img: 'assets/child.jpg', av: 'assets/avatar-1.jpg',
+    img: 'assets/child.jpg', av: 'assets/cat.jpg',
     quote: 'Divorțul nu înseamnă că ai eșuat',
     body: 'Divorțul nu înseamnă că ai eșuat, înseamnă că ai ales să nu mai trăiești într-o variantă greșită a vieții tale. Ca mamă singură, o să ai zile în care te simți copleșită și zile în care o să realizezi cât de mult poți duce pe umerii tăi. Permite-ți ambele. Copilul tău nu are nevoie de o mamă perfectă, are nevoie de o mamă prezentă și sinceră, iar tu ești deja asta. Ia-o o zi pe rând, cere ajutor fără să te simți vinovată și nu uita că grija față de tine nu e un lux, e o necesitate.',
   },
   {
-    img: 'assets/friends.jpg', av: 'assets/avatar-2.jpg',
+    img: 'assets/friends.jpg', av: 'assets/coffee.jpg',
     quote: 'Cum va mai faceti prieteni dupa 25 de ani?',
     body: 'După 25 de ani, lumea îți spune că e greu să-ți mai faci prieteni noi și sincer, are dreptate că e diferit. Dar diferit nu înseamnă imposibil. Înseamnă că acum alegi mai conștient, că nu mai aștepți ca magia să se întâmple de la sine, ci ieși în întâmpinarea ei. Prieteniile de după 25 de ani nu sunt mai puțin autentice, sunt mai câștigate. Și tocmai de aceea valorează mai mult.'
   },
@@ -119,7 +125,7 @@ const LP_HERO_CARDS = [
   },
 ];
 
-function LpHero({ email, setEmail }) {
+function LpHero() {
   const go = (e) => {
     scrollTo('acces-anticipat')(e);
   };
@@ -137,19 +143,9 @@ function LpHero({ email, setEmail }) {
           Pentru că unele lucruri nu pot fi spuse cu voce tare, dar pot fi scrise
         </p>
         <div className="lp-hero__cta anim-up anim-up-d3">
-          <div className="lp-hero__email-wrap">
-            <input
-              className="lp-hero__email-input"
-              type="email"
-              placeholder="adresa ta de email"
-              aria-label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <AnimatedCTA href="#acces-anticipat" onClick={go}>
-              Vreau acces anticipat
-            </AnimatedCTA>
-          </div>
+          <AnimatedCTA href="#acces-anticipat" onClick={go}>
+            Vreau acces anticipat
+          </AnimatedCTA>
           <span className="lp-hero__proof">
             <LpAvatarStack avatars={LP_AVATARS} more="+180" size={34} light={false} />
             <span>femei deja pe listă</span>
@@ -263,29 +259,9 @@ function LpAbout() {
   return (
     <section className="lp-about">
       <BotanicDeco />
-      <FadeUp>
-        <h2 className="lp-about__title">Despre ce este vorba pe scurt</h2>
-        <p className="lp-about__sub">
-          Pentru poveștile care merită să fie spuse, dar nu știau unde.
-        </p>
-      </FadeUp>
-
-      <FadeUp delay={0.1}>
-        <div className="lp-about__stats">
-          {LP_STATS.map((s) => (
-            <div key={s.label} className="lp-about__stat">
-              <span className="lp-about__stat-num">{s.num}</span>
-              <span className="lp-about__stat-label">{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </FadeUp>
-
-      <hr className="lp-about__divider" />
-
       <FadeUp delay={0.15}>
         <div className="lp-about__desc">
-          <h3 className="lp-about__desc-head">Despre</h3>
+          <h3 className="lp-about__desc-head">Despre ce este vorba <br/> pe scurt</h3>
           <p className="lp-about__desc-body">
 Există momente când ai nevoie de un loc unde sinceritatea nu te costă nimic. NoJudgeStory e acea comunitate, un spațiu creat de femei pentru femei, unde poveștile de viață sunt împărtășite cu curaj și primite cu respect. Aici nu există judecată, există doar oameni care se înțeleg pentru că au trecut prin lucruri asemănătoare.
           </p>
@@ -378,7 +354,7 @@ function LpFooter() {
 }
 
 /* ───────────── pre-register modal ───────────── */
-function PreRegModal({ onClose, initialEmail }) {
+function PreRegModal({ onClose }) {
   React.useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -397,7 +373,7 @@ function PreRegModal({ onClose, initialEmail }) {
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
         </button>
-        <PreRegisterSection initialEmail={initialEmail} />
+        <PreRegisterSection />
       </div>
     </div>
   );
@@ -406,22 +382,21 @@ function PreRegModal({ onClose, initialEmail }) {
 /* ───────────── page ───────────── */
 function LandingPage() {
   const [showPreReg, setShowPreReg] = React.useState(false);
-  const [heroEmail, setHeroEmail] = React.useState('');
   return (
     <div className="lp-page">
       <LandingStyles />
       <LpNav />
       <main>
-        <LpHero email={heroEmail} setEmail={setHeroEmail} />
+        <LpHero />
 
         <LpFeaturedArticles onOpen={() => setShowPreReg(true)} onReadMore={() => setShowPreReg(true)} />
         <LpAbout />
         <LpCategories />
         <LpFounder />
-        <PreRegisterSection initialEmail={heroEmail} />
+        <PreRegisterSection />
       </main>
       <LpFooter />
-      {showPreReg && <PreRegModal onClose={() => setShowPreReg(false)} initialEmail={heroEmail} />}
+      {showPreReg && <PreRegModal onClose={() => setShowPreReg(false)} />}
     </div>
   );
 }
@@ -518,15 +493,6 @@ function LandingStyles() {
     .lp-hero__sub { font-family: var(--font-sans); font-size: var(--fs-lead); line-height: var(--lh-body);
       color: var(--text-muted); margin: 24px auto 0; max-width: 52ch; }
     .lp-hero__cta { display:flex; flex-direction:column; align-items:center; gap: 16px; margin: 32px 0 0; }
-    .lp-hero__email-wrap { display:flex; flex-direction:row; align-items:center; gap: 10px; width: 100%; max-width: 700px; }
-    .lp-hero__email-input { flex: 1; padding: 16px 22px; font-family: var(--font-sans);
-      font-size: var(--fs-body); color: var(--text-strong);
-      background: #fff; border: 1.5px solid var(--border-subtle);
-      border-radius: var(--radius-pill); outline: none;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      transition: border-color 0.2s, box-shadow 0.2s; }
-    .lp-hero__email-input::placeholder { color: var(--text-muted); }
-    .lp-hero__email-input:focus { border-color: var(--njs-rose); box-shadow: 0 0 0 3px rgba(243,72,109,0.15); }
     .lp-hero__proof { display:flex; align-items:center; gap: 12px; font-size: var(--fs-sm); color: var(--text-muted); }
     .lp-hero__proof strong { color: var(--text-strong); font-weight: var(--fw-bold); }
 
@@ -737,8 +703,10 @@ function LandingStyles() {
       .lp-nav__links a:not(.lp-nav__cta) { display:none; }
     }
     @media (max-width: 600px){
-      .lp-hero { padding: 100px 20px 56px; }
+      .lp-hero { padding: 100px 20px 20px; }
       .lp-hero__title { font-size: 38px; }
+      .lp-hero__cta { gap: 10px; margin-top: 22px; }
+      .lp-hero__proof { gap: 8px; }
       .lp-h2 { font-size: 34px; }
       .lp-fa, .lp-cats, .lp-founder { padding-left: 20px; padding-right: 20px; }
       .lp-fa__row1, .lp-fa__row2 { grid-template-columns: 1fr; }
@@ -750,9 +718,6 @@ function LandingStyles() {
       .lp-hero__cards::-webkit-scrollbar { display: none; }
       .lp-hc { flex: 0 0 80vw; max-width: 320px; min-height: 380px; scroll-snap-align: start; }
       .lp-hc:nth-child(2), .lp-hc:nth-child(4) { margin-top: 0; }
-      .lp-hero__email-wrap { flex-direction: column; align-items: stretch; }
-      .lp-hero__email-input { width: 100%; text-align: center; }
-      .lp-hero__email-wrap .anim-cta { justify-content: center; }
       .lp-cats__grid { grid-template-columns: repeat(3, minmax(0, 140px)); gap: 8px; }
       .lp-cats__title { padding: 0 20px; }
       .lp-cat-card__label { font-size: 12px; padding: 12px 10px 10px; }
