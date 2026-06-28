@@ -5,8 +5,9 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Minimal browser globals so the DS IIFE bundle doesn't crash in Node
+// Minimal browser globals so the DS IIFE bundle and react-dom don't crash in Node
 globalThis.window = globalThis;
+globalThis.navigator = { userAgent: '' };
 const makeEl = () => ({
   setAttribute: () => {},
   removeAttribute: () => {},
