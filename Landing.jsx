@@ -110,12 +110,12 @@ const LP_HERO_CARDS = [
   },
   {
     img: 'assets/friends.jpg', av: 'assets/coffee.jpg',
-    quote: 'Cum va mai faceti prieteni dupa 25 de ani?',
+    quote: 'Cum vă mai faceți prieteni după 25 de ani?',
     body: 'După 25 de ani, lumea îți spune că e greu să-ți mai faci prieteni noi și sincer, are dreptate că e diferit. Dar diferit nu înseamnă imposibil. Înseamnă că acum alegi mai conștient, că nu mai aștepți ca magia să se întâmple de la sine, ci ieși în întâmpinarea ei. Prieteniile de după 25 de ani nu sunt mai puțin autentice, sunt mai câștigate. Și tocmai de aceea valorează mai mult.'
   },
   {
     img: 'assets/woman2.jpg', av: 'assets/avatar-3.jpg',
-    quote: 'M-am obișnuit cu ideea că o sa fiu singura o perioada lunga',
+    quote: 'M-am obișnuit cu ideea că o să fiu singură o perioadă lungă',
     body: 'Să te obișnuiești cu ideea că vei fi singură o perioadă poate părea o formă de protecție după dezamăgiri, dar e important să nu o transformi într-o concluzie despre viitorul tău. Poți să accepți cum stau lucrurile acum fără să crezi că așa vor rămâne mereu. Faptul că ești singură în acest moment nu înseamnă că nu vei mai avea relații sau că nu vei întâlni pe cineva potrivit, ci doar că treci printr-o etapă în care ești mai precaută și ai nevoie de timp.',
   },
   {
@@ -314,12 +314,12 @@ function LpFounder() {
           <span className="lp-eyebrow lp-eyebrow--brand">Scrisoare de la mine, pentru tine</span>
           <p className="lp-founder__hand">
             Te încurajez și pe tine să scrii, chiar dacă simți că nu ai talent. Sinceră să fiu, nici eu nu am, dar îmi place să-mi exprim gândurile și știu că și tu simți la fel. <br />
-            Am creat NoJudgeStory, o comunitate unde îți poți împărtăși povestile de viata fără teama de a fi judecat/a.
-            Povestește-ne despre tine, despre ceea ce simti, gandesti sau despre provocările prin care ai trecut, povestea ta poate inspira alte persoane din această comunitate mai mult decat crezi.
-            Aici ne ghidam dupa o regula principala „Nu ne judecăm”, consideram ca orice lucru poate fi frumos spus, cu respect si fara jigniri.
+            Am creat NoJudgeStory, o comunitate unde îți poți împărtăși poveștile de viață fără teama de a fi judecat/ă.
+            Povestește-ne despre tine, despre ceea ce simți, gândești sau despre provocările prin care ai trecut, povestea ta poate inspira alte persoane din această comunitate mai mult decât crezi.
+            Aici ne ghidăm după o regulă principală „Nu ne judecăm”, considerăm că orice lucru poate fi frumos spus, cu respect și fără jigniri.
             <br />
             <br />
-            Bine ai venit in comunitate! ;)
+            Bine ai venit în comunitate! ;)
             <br />
             <br />
             With love,
@@ -338,16 +338,7 @@ function LpFooter() {
     <footer className="lp-foot">
       <div className="lp-foot__top">
         <a href="#top" onClick={scrollTo('top')}><img src="assets/logo.png" alt="No Judge Story" style={{ height: '32px', display: 'block' }} /></a>
-        <nav className="lp-foot__nav">
-          <a href="#povesti" onClick={scrollTo('povesti')}>Povești</a>
-          <a href="#categorii" onClick={scrollTo('categorii')}>Categorii</a>
-          <a href="#fondatoare" onClick={scrollTo('fondatoare')}>Despre</a>
-          <a href="#acces-anticipat" onClick={scrollTo('acces-anticipat')}>Acces anticipat</a>
-        </nav>
-      </div>
-      <div className="lp-foot__bottom">
-        <span>Un spațiu sigur pentru povești fără judecată.</span>
-        <span>© 2026 No Judge Story</span>
+              <span>© 2026 No Judge Story</span>
       </div>
     </footer>
   );
@@ -368,7 +359,7 @@ function PreRegModal({ onClose }) {
   return (
     <div className="lp-modal-overlay" onClick={onClose}>
       <div className="lp-modal-box" onClick={(e) => e.stopPropagation()}>
-        <button className="lp-modal-close" onClick={onClose} aria-label="Inchide">
+        <button className="lp-modal-close" onClick={onClose} aria-label="Închide">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
