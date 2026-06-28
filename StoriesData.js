@@ -92,7 +92,7 @@ Mi-am găsit job după trei luni. Mai puțin bani la început, alt domeniu. Dar 
     id: 'imagine-de-sine',
     img: 'assets/cat.jpg',
     title: 'Am 34 de ani și mi-a luat tot acest timp să înțeleg că nu am nimic de reparat. ',
-    excerpt: 'Asm petrecut ani întregi încercând să fiu mai liniștită, mai sociabilă, mai ambițioasă, mai relaxată, mereu altceva decât eram.',
+    excerpt: 'Am petrecut ani întregi încercând să fiu mai liniștită, mai sociabilă, mai ambițioasă, mai relaxată, mereu altceva decât eram.',
     date: '21/03/2026',
     read: '3 minute de citit',
     cat: 'imagine de sine',

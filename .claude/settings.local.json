@@ -5,7 +5,8 @@
       "Bash(pkill -f \"vite\")",
       "Bash(npm install *)",
       "Bash(npm audit *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(curl -v \"https://script.google.com/macros/s/AKfycbxbgkcv1-BX6voL2rozO_y9qd4t4Yjtn2yOPm8GCgV71YwYNmYOoAwVMTUyilWNZunU-A/exec?email=test%40test.com&name=Test\")"
     ]
   }
 }

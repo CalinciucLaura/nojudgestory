@@ -78,7 +78,7 @@ function PrForm({ onDone, initialEmail = '' }) {
     setTouched(true);
     if (!validEmail) return;
     const params = new URLSearchParams({ email: email.trim(), name: name.trim() });
-    fetch('https://script.google.com/macros/s/AKfycbxbgkcv1-BX6voL2rozO_y9qd4t4Yjtn2yOPm8GCgV71YwYNmYOoAwVMTUyilWNZunU-A/exec?' + params)
+    fetch('https://script.google.com/macros/s/AKfycbxbgkcv1-BX6voL2rozO_y9qd4t4Yjtn2yOPm8GCgV71YwYNmYOoAwVMTUyilWNZunU-A/exec?' + params, { mode: 'no-cors' })
       .catch(() => {});
     onDone(name.trim());
   };
